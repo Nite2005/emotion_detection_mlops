@@ -1,0 +1,93 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/data/data_ingestion.py
+    deps:
+    - path: src/data/data_ingestion.py
+      hash: md5
+      md5: 6d079136ff4b4ee19309d054841774bb
+      size: 3679
+    outs:
+    - path: data/raw
+      hash: md5
+      md5: fb326d2eec197669f9638afde28356bf.dir
+      size: 827973
+      nfiles: 2
+  data_preprocessing:
+    cmd: python src/data/data_preprocessing.py
+    deps:
+    - path: data/raw
+      hash: md5
+      md5: fb326d2eec197669f9638afde28356bf.dir
+      size: 827973
+      nfiles: 2
+    - path: src/data/data_preprocessing.py
+      hash: md5
+      md5: bfff77ab146ae5adf542336e5e75ec04
+      size: 5034
+    outs:
+    - path: data/interim
+      hash: md5
+      md5: 4aa8cc6b6cd152020830bae4441b0182.dir
+      size: 566210
+      nfiles: 2
+  feature_engineering:
+    cmd: python src/features/feature_engineering.py
+    deps:
+    - path: data/interim
+      hash: md5
+      md5: 4aa8cc6b6cd152020830bae4441b0182.dir
+      size: 566210
+      nfiles: 2
+    - path: src/features/feature_engineering.py
+      hash: md5
+      md5: e4073c749f80c87ed50ec6bddaeb91fa
+      size: 3626
+    outs:
+    - path: data/processed
+      hash: md5
+      md5: b545c03866413d5e455f6103cad77185.dir
+      size: 20782910
+      nfiles: 2
+    - path: models/vectorizer.pkl
+      hash: md5
+      md5: debf4d274092f2cdd79fbc3db912ea91
+      size: 27452
+  model_building:
+    cmd: python src/model/model_building.py
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: b545c03866413d5e455f6103cad77185.dir
+      size: 20782910
+      nfiles: 2
+    - path: src/model/model_building.py
+      hash: md5
+      md5: 4370ae74feaea77e0fb1a7570497790d
+      size: 1995
+    outs:
+    - path: models/model.pkl
+      hash: md5
+      md5: 4ebd8c62130c65c747360e9a8e8a2c5b
+      size: 14707
+  model_evaluation:
+    cmd: python src/model/model_evaluation.py
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: b545c03866413d5e455f6103cad77185.dir
+      size: 20782910
+      nfiles: 2
+    - path: models/model.pkl
+      hash: md5
+      md5: 4ebd8c62130c65c747360e9a8e8a2c5b
+      size: 14707
+    - path: src/model/model_evaluation.py
+      hash: md5
+      md5: 09b7588e29c66b517b0ec543e7c6ebc6
+      size: 3507
+    outs:
+    - path: reports/metric.json
+      hash: md5
+      md5: ec7ba0140eaaf599f833e970a14919f8
+      size: 120

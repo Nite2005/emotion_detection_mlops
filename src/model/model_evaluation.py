@@ -40,7 +40,7 @@ def load_test_data(data_path: str) -> pd.DataFrame:
 
 def load_model(path: str) -> object:
     try:
-        model = pickle.load(path,"rb")
+        model = pickle.load(open(path,"rb"))
         logger.debug("Successfully load model")
         return model
     except FileNotFoundError:
