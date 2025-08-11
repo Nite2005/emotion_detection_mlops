@@ -30,3 +30,8 @@ jobs:
     - name: Run Pipeline
       run: |
         dvc repro
+
+    - name: Run tests 
+      run: |
+        python -m unittest tests/test_model.py
+      
