@@ -57,12 +57,13 @@ def register_model(model_name: str, model_info: dict):
         client.transition_model_version_stage(
             name=model_name,
             version=model_version,
-            stage='Staging'
+            stage="Staging"
         )
 
         logger.debug(f"Model {model_name} version {model_version.version} registered and transitioned to staging")
     except Exception as e:
         logger.error("Error during model registration: %s", e)
+        raise
 
 
 def main():
