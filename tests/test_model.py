@@ -9,7 +9,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 class TestModelLoading(unittest.TestCase):
 
     @classmethod
-    def setupClass(cls):
+    def setUpClass(cls):
         mlflow.set_tracking_uri("http://127.0.0.1:5000")
         cls.model_name = "my_model"
         cls.model_version = cls.get_latest_model_version(cls.model_name)
