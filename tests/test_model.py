@@ -67,3 +67,6 @@ class TestModelLoading(unittest.TestCase):
         self.assertGreaterEqual(f1_new,expected_f1,f'F1 score should be at least {expected_f1}')
 
 
+if __name__ == "__main__":
+    unittest.main()
+
