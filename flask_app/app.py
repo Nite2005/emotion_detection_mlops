@@ -10,9 +10,18 @@ import string
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from .preprocessing_utility import normalize_text
+import dagshub
 
-
-mlflow.set_tracking_uri("http://127.0.0.1:5000")
+dagshub_token = os.getenv("DAGSHUB_PAT")
+if not dagshub_token:
+    raise EnvironmentError("DAGSHUB_PAT environment variable is not set")
+os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token
+os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
+dagshub_url = "https://dagshub.com"
+repo_owner = "Nite2005"
+repo_name = "emotion_detection_mlops"
+# Set up MLflow tracking URI
+mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
 
 app = Flask(__name__)
 
