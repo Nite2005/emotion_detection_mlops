@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/hp/Desktop/Cookiecutter/emotion_detection_mlops/mlruns/295802291120580275/models/m-2aa6d4d7d89a439cb25cab7bd83b56b1/artifacts
+creation_timestamp: 1754907803140
+experiment_id: '295802291120580275'
+last_updated_timestamp: 1754907809235
+model_id: m-2aa6d4d7d89a439cb25cab7bd83b56b1
+model_type: null
+name: model
+source_run_id: 6a67bfb7bf6041dfa0ea75453efc6494
+status: 2
+status_message: null

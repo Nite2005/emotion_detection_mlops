@@ -8,7 +8,15 @@ from logging.handlers import RotatingFileHandler
 import mlflow
 import mlflow.sklearn
 from mlflow.models.signature import infer_signature
+import dagshub
 
+# dagshub.init(repo_owner='Nite2005', repo_name='emotion_detection_mlops', mlflow=True)
+
+# dagshub_url = "https://dagshub.com"
+# repo_owner = "Nite2005"
+# repo_name = "emotion_detection_mlops"
+
+# mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
 
 logger = logging.getLogger("model_evaluation")
 logger.setLevel("DEBUG")
