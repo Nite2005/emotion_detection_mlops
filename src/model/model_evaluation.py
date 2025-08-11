@@ -136,11 +136,7 @@ def main():
                 for param_name, param_value in params.items():
                     mlflow.log_param(param_name, param_value)
 
-            mlflow.sklearn.log_model(
-                sk_model=model,
-                name="model",
-                signature=signature,
-                input_example=x_test.head(1)
+            mlflow.sklearn.log_model(model,"model",signature=signature
             )
 
             save_model_info(run.info.run_id, "model", "reports/experiment_info.json")
