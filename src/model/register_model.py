@@ -2,10 +2,15 @@ import json
 import mlflow
 import logging
 import os
+import dagshub
 
-# mlflow.set_tracking_uri("http://127.0.0.1:5000")
+dagshub.init(repo_owner='Nite2005', repo_name='emotion_detection_mlops', mlflow=True)
 
+dagshub_url = "https://dagshub.com"
+repo_owner = "Nite2005"
+repo_name = "emotion_detection_mlops"
 
+mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
 logger = logging.getLogger('register_model')
 logger.setLevel('DEBUG')
 
