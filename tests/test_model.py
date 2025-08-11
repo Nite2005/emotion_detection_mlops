@@ -32,7 +32,7 @@ class TestModelLoading(unittest.TestCase):
     def test_model_signature(self):
         input_text = "hi how are you"
         input_data = self.vectorizer.transform([input_text])
-        input_df = pd.DataFrame(input_data.toarray(), columns=self.vectorizer.get_feature_name_out())
+        input_df = pd.DataFrame(input_data.toarray(), columns=self.vectorizer.get_feature_names_out())
 
         prediction = self.model.predict(input_df)
         self.assertEqual(input_df.shape[1], len(self.vectorizer.get_feature_names_out()))
