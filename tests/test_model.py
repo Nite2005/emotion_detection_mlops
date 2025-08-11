@@ -10,7 +10,6 @@ class TestModelLoading(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        mlflow.set_tracking_uri("http://127.0.0.1:5000")
         cls.model_name = "my_model"
         cls.model_version = cls.get_latest_model_version(cls.model_name)
         cls.model_uri = f'models:/{cls.model_name}/{cls.model_version}'
