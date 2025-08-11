@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/hp/Desktop/Cookiecutter/emotion_detection_mlops/mlruns/295802291120580275/6981479c89d04727b401dbdae8693442/artifacts
+end_time: 1754906706736
+entry_point_name: ''
+experiment_id: '295802291120580275'
+lifecycle_stage: active
+run_id: 6981479c89d04727b401dbdae8693442
+run_name: lyrical-mink-748
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754906700618
+status: 3
+tags: []
+user_id: hp

@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/hp/Desktop/Cookiecutter/emotion_detection_mlops/mlruns/295802291120580275/6f5a41d9dffc4e1987238801cf6b1370/artifacts
+end_time: 1754906047504
+entry_point_name: ''
+experiment_id: '295802291120580275'
+lifecycle_stage: active
+run_id: 6f5a41d9dffc4e1987238801cf6b1370
+run_name: bittersweet-sow-252
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754906039278
+status: 3
+tags: []
+user_id: hp

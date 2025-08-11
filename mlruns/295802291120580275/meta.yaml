@@ -1,0 +1,6 @@
+artifact_location: file:///C:/Users/hp/Desktop/Cookiecutter/emotion_detection_mlops/mlruns/295802291120580275
+creation_time: 1754906039025
+experiment_id: '295802291120580275'
+last_update_time: 1754906039025
+lifecycle_stage: active
+name: dvc-pipeline

@@ -1,0 +1,22 @@
+artifact_path: file:///C:/Users/hp/Desktop/Cookiecutter/emotion_detection_mlops/mlruns/295802291120580275/models/m-d0737463d3db4547a610d2e2aef014e0/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.13.2
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.1
+mlflow_version: 3.2.0
+model_id: m-d0737463d3db4547a610d2e2aef014e0
+model_size_bytes: 16209
+model_uuid: m-d0737463d3db4547a610d2e2aef014e0
+prompts: null
+run_id: 6f5a41d9dffc4e1987238801cf6b1370
+utc_time_created: '2025-08-11 09:54:00.184289'

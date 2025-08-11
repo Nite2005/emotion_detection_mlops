@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/hp/Desktop/Cookiecutter/emotion_detection_mlops/mlruns/295802291120580275/133e48fb504c4ad1afa70fbab030c112/artifacts
+end_time: 1754906919886
+entry_point_name: ''
+experiment_id: '295802291120580275'
+lifecycle_stage: active
+run_id: 133e48fb504c4ad1afa70fbab030c112
+run_name: peaceful-shoat-237
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754906913838
+status: 3
+tags: []
+user_id: hp

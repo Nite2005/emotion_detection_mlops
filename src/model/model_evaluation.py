@@ -5,6 +5,9 @@ import os
 import json
 import logging 
 from logging.handlers import RotatingFileHandler
+import mlflow
+import mlflow.sklearn
+from mlflow.models.signature import infer_signature
 
 
 logger = logging.getLogger("model_evaluation")
@@ -55,7 +58,7 @@ def testing_model(test_df: pd.DataFrame, model: object) -> pd.DataFrame:
         x_test = test_df.iloc[:,:-1]
         y_test = test_df.iloc[:,-1]
         y_pred = model.predict(x_test)
-        return y_pred, y_test
+        return y_pred, y_test, x_test
     except Exception as e:
         logger.error("Unexpected error occur in %s", e)
 
@@ -91,18 +94,56 @@ def save_metric(path: str, metric_dict: dict) -> None:
         raise
 
 
-def main():
+def save_model_info(run_id: str, model_path: str, file_path: str) -> None:
+    """Save the model run id and path to a json file"""
     try:
-        test_data = load_test_data("data/processed/test_df.csv")
-        model = load_model("models/model.pkl")
-        y_pred, y_test = testing_model(test_data, model)
-        metric_dict = metric_evaluation(y_pred, y_test)
-        save_metric("reports/metric.json", metric_dict)
-        logger.debug("Successfully executed model_evaluation process")
-        print('Successfully executed model_evaluation process')
+        model_info = {'run_id': run_id, 'model_path': model_path}
+        with open(file_path, 'w') as file:
+            json.dump(model_info, file, indent=4)
+        logger.debug("Model info saved to %s", file_path)
     except Exception as e:
-        logger.error("Failed to complete model evaluation process")
-        print(f"Error{e}")
+        logger.error("Error occured while saving the model info: %s", e)
+        raise
+
+def main():
+    mlflow.set_experiment("dvc-pipeline")
+    with mlflow.start_run() as run:
+        try:
+            test_data = load_test_data("data/processed/test_df.csv")
+            model = load_model("models/model.pkl")
+            y_pred, y_test, x_test = testing_model(test_data, model)
+            signature = infer_signature(x_test, y_pred)
+
+            metric_dict = metric_evaluation(y_pred, y_test)
+            save_metric("reports/metric.json", metric_dict)
+
+            for metric_name, metric_value in metric_dict.items():
+                mlflow.log_metric(metric_name, metric_value)
+
+            if hasattr(model, 'get_params'):
+                params = model.get_params()
+                for param_name, param_value in params.items():
+                    mlflow.log_param(param_name, param_value)
+
+            mlflow.sklearn.log_model(
+                sk_model=model,
+                name="model",
+                signature=signature,
+                input_example=x_test.head(1)
+            )
+
+            save_model_info(run.info.run_id, "model", "reports/experiment_info.json")
+
+            mlflow.log_artifact("reports/metric.json")
+
+            mlflow.log_artifact('reports/experiment_info.json')
+
+            mlflow.log_artifact('error.log')
+            logger.debug("Successfully executed model_evaluation process")
+            print('Successfully executed model_evaluation process')
+        except Exception as e:
+            logger.error("Failed to complete model evaluation process")
+            print(f"Error{e}")
 
 
 if __name__ == "__main__":

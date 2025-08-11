@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/hp/Desktop/Cookiecutter/emotion_detection_mlops/mlruns/295802291120580275/c4c6186998ed42c69392e74518c30a2b/artifacts
+end_time: 1754906786382
+entry_point_name: ''
+experiment_id: '295802291120580275'
+lifecycle_stage: active
+run_id: c4c6186998ed42c69392e74518c30a2b
+run_name: burly-doe-230
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754906780512
+status: 3
+tags: []
+user_id: hp
