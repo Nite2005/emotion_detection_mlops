@@ -45,7 +45,7 @@ def load_data(train_data_path: str, test_data_path:  str) -> pd.DataFrame:
 
 def apply_bow(train_data: pd.DataFrame, test_data: pd.DataFrame) -> pd.DataFrame:
     try:
-        vectorizer = CountVectorizer(max_features=1100)
+        vectorizer = CountVectorizer(max_features=1500)
         x_train = train_data['content']
         y_train = train_data['sentiment']
         logger.debug("Split train data between x_train and y_train")

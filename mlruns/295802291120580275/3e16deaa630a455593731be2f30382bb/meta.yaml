@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/hp/Desktop/Cookiecutter/emotion_detection_mlops/mlruns/295802291120580275/3e16deaa630a455593731be2f30382bb/artifacts
+end_time: 1754909261197
+entry_point_name: ''
+experiment_id: '295802291120580275'
+lifecycle_stage: active
+run_id: 3e16deaa630a455593731be2f30382bb
+run_name: luminous-finch-831
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754909254822
+status: 3
+tags: []
+user_id: hp

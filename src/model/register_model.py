@@ -2,7 +2,8 @@ import json
 import mlflow
 import logging
 import os
-import dagshub
+
+mlflow.set_tracking_uri("http://127.0.0.1:5000")
 
 
 logger = logging.getLogger('register_model')
@@ -24,9 +25,9 @@ logger.addHandler(file_handler)
 def load_model_info(file_path: str) -> dict:
     """Load the model info from a json file"""
     try:
-        with open(file_path, 'w') as file:
+        with open(file_path, 'r') as file:
             model_info = json.load(file)
-        logger.debug("Model info loaded from %s", file_path)
+        logger.debug("Model info loaded from  %s", file_path)
         return model_info
     except FileNotFoundError:
         logger.error("File not found in %s", file_path)
@@ -39,7 +40,7 @@ def load_model_info(file_path: str) -> dict:
 def register_model(model_name: str, model_info: dict):
     """Register the model to the mlflow Model Registry """
     try:
-        model_uri = f"runs:/{model_info['runs_id']}/{model_info['model_path']}"
+        model_uri = f"runs:/{model_info['run_id']}/{model_info['model_path']}"
 
         model_version = mlflow.register_model(model_uri, model_name)
 
