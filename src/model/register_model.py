@@ -56,7 +56,7 @@ def register_model(model_name: str, model_info: dict):
         client = mlflow.tracking.MlflowClient()
         client.transition_model_version_stage(
             name=model_name,
-            version=model_version,
+            version=model_version.version,
             stage="Staging"
         )
 
