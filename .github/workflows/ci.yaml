@@ -24,7 +24,7 @@ jobs:
           ${{ runner.os }}-pip-
 
     - name: install dependencies
-      runs: |
+      run: |
         pip install -r requirements.txt
     
     - name: Run Pipeline
